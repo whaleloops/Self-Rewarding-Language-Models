@@ -5,13 +5,15 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import pandas as pd
 import os, sys
 
-if len(sys.argv) != 4:
-    print("Usage: python 02_gen_responses.py <model_name> <prompts_file> <responses_file>")
+if len(sys.argv) != 5:
+    print("Usage: python 02_gen_responses.py <base_model_name> <model_name> <prompts_file> <responses_file>")
     exit()
 
-model_name = sys.argv[1]
-prompts_file = sys.argv[2]
-responses_file = sys.argv[3]
+
+base_model_name = sys.argv[1]
+model_name = sys.argv[2]
+prompts_file = sys.argv[3]
+responses_file = sys.argv[4]
 
 device = "cuda" # the device to load the model onto
 
@@ -25,16 +27,12 @@ def get_bnb_config():
     return bnb_config
 
 def load_fined_tuned():
-    # ift fine-tuned model
-    # base_model_name = "raulc0399/mistral-7b-ift-3"
 
-    # the m1 model
-    base_model_name = "raulc0399/mistral-7b-m1-v1"
 
     bnb_config = get_bnb_config()
 
     model = AutoModelForCausalLM.from_pretrained(
-        base_model_name,
+        model_name,
         device_map="auto",
         quantization_config=bnb_config,
     )

@@ -1,0 +1,10 @@
+  0%|                                                                                                                                                                        | 0/2 [00:00<?, ?it/s]/home/zhichaoyang/miniconda3/envs/mixtral_env/lib/python3.9/site-packages/torch/utils/checkpoint.py:429: UserWarning: torch.utils.checkpoint: please pass in use_reentrant=True or use_reentrant=False explicitly. The default value of use_reentrant will be updated to be False in the future. To maintain current behavior, pass use_reentrant=True. It is recommended that you use use_reentrant=False. Refer to docs for more details on the differences between the two variants.
+  warnings.warn(
+/home/zhichaoyang/miniconda3/envs/mixtral_env/lib/python3.9/site-packages/torch/utils/checkpoint.py:61: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+Could not estimate the number of tokens of the input, floating-point operations will not be computed
+{'loss': 0.6931, 'learning_rate': 1.0000000000000002e-06, 'rewards/chosen': 0.0, 'rewards/rejected': 0.0, 'rewards/accuracies': 0.0, 'rewards/margins': 0.0, 'logps/rejected': -203.3988037109375, 'logps/chosen': -206.56092834472656, 'logits/rejected': -2.3878872394561768, 'logits/chosen': -2.4491982460021973, 'epoch': 0.5}
+ 50%|████████████████████████████████████████████████████████████████████████████████                                                                                | 1/2 [00:37<00:37, 37.87s/it]
+{'loss': 0.6931, 'learning_rate': 2.0000000000000003e-06, 'rewards/chosen': 0.0, 'rewards/rejected': 0.0, 'rewards/accuracies': 0.0, 'rewards/margins': 0.0, 'logps/rejected': -207.6392822265625, 'logps/chosen': -219.29620361328125, 'logits/rejected': -2.341620922088623, 'logits/chosen': -2.449068784713745, 'epoch': 1.0}
+
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [01:12<00:00, 36.41s/it]
