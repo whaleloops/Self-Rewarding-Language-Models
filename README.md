@@ -29,68 +29,7 @@ There are 5 main steps in each iteration of the Self-Rewarding loop.
 4) [04_gen_preferences.py](scripts/04_gen_preferences.py) - Generate preference pairs given the scores to create a DPO dataset
 5) [05_dpo.py](scripts/05_dpo.py) - Run Direct Preference Optimization (DPO) to train the next iteration of the model
 
-## 🐂 Setup Oxen.ai
+## TODO
+Format MMLU as [ift_eft.jsonl](https://www.oxen.ai/datasets/Self-Rewarding-Language-Models/file/main/M0/train/ift_eft.jsonl)
 
-We use [Oxen.ai](https://oxen.ai) to version the intermediate models and datasets that are generated throughout the process.
-
-If you are not familiar with Oxen.ai, it is an open source, blazing fast, version control system that is built from the ground up to handle large model files, large datasets, and large sets of multi-modal data that is a pain to version in git or git-lfs.
-
-Feel free to checkout our [GitHub project](https://github.com/Oxen-AI/oxen-release) to learn more.
-
-## 🌎 Create Remote Data Repository
-
-If you have not already, create an account on [Oxen.ai](https://oxen.ai/register). This script is setup to upload all the intermediate steps to an Oxen.ai data repository so that we can explore the data the model is generating, as well as version each intermediate step.
-
-Once you have an account, you can create your repository.
-
-<img src="./images/CreateRepository.jpg" width="512px"></img>
-
-## 👨‍💻 Clone Locally
-
-Clone a [data repository](https://docs.oxen.ai/getting-started/learn-the-basics) to your local machine to get Oxen ready to version the data.
-
-```bash
-export USERNAME=my-username
-export REPOSITORY_NAME=my-repo-name
-oxen clone https://hub.oxen.ai/$USERNAME/$REPOSITORY_NAME
-cd $REPOSITORY_NAME
-```
-
-You can copy the command in the upper right hand corner of the page to get the exact URL to clone. In the screenshot below it is:
-
-```bash
-oxen clone https://hub.oxen.ai/oxbot/My-SRLM
-```
-
-<img src="./images/MyRepo.png" width="512px"></img>
-
-
-## ⬇️ Download Starter Data
-
-Download the initial datasets from our [datasets/Self-Rewarding-Language-Models](https://www.oxen.ai/datasets/Self-Rewarding-Language-Models) Oxen.ai data repository. We took care of cleaning up the initial datasets so you can copy them into your own reward loop.
-
-```bash
-mkdir -p M0/train
-oxen download datasets/Self-Rewarding-Language-Models M0/train/ift_eft.jsonl -o M0/train
-oxen download datasets/Self-Rewarding-Language-Models M0/train/ift.jsonl -o M0/train
-```
-
-Use the `add` and `commit` commands to track the initial training data and push it to your own Oxen.ai repository.
-
-```bash
-oxen add M0
-oxen commit -m "adding initial ift & eft training data"
-oxen push origin main
-```
-
-If you are familiar with git, the Oxen command line tool should be pretty intuitive.
-
-## ⚽️ Kick it off
-
-Run the self-reward.sh script to generate the first end to end model
-
-```bash
-./self-reward.sh scripts mistralai/Mistral-7B-v0.1 M0
-```
-
-TODO: Put this in a loop for M0, M1, M2, etc...
+Add NLL loss to winning preferences.
