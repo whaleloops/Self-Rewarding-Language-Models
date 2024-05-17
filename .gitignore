@@ -1,3 +1,5 @@
 .vscode
 data/
+preprocess/
+wandb/
 __pycache__
